@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: melesha-nails-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    plan: free
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: MASTER_ID
+        sync: false 

@@ -36,6 +36,35 @@ pip install pyTelegramBotAPI
 python bot.py
 ```
 
+## Развёртывание на Render
+
+### Пошаговая инструкция:
+
+1. **Создайте аккаунт на Render:**
+   - Перейдите на [render.com](https://render.com)
+   - Зарегистрируйтесь через GitHub
+
+2. **Создайте новый Web Service:**
+   - Нажмите "New" → "Web Service"
+   - Подключите ваш GitHub репозиторий: `IgorSuhh/melesha_nails-2.0`
+
+3. **Настройте сервис:**
+   - **Name**: `melesha-nails-bot`
+   - **Environment**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `python bot.py`
+
+4. **Добавьте переменные окружения:**
+   - В разделе "Environment Variables" добавьте:
+     - `BOT_TOKEN` = ваш токен бота
+     - `MASTER_ID` = ID мастера в Telegram
+
+5. **Нажмите "Create Web Service"**
+
+### Переменные окружения:
+- `BOT_TOKEN` - токен вашего Telegram бота
+- `MASTER_ID` - ID мастера в Telegram (число)
+
 ## Структура проекта
 
 ```
@@ -45,6 +74,8 @@ Melesha_nails2.0/
 ├── appointments.db     # База данных записей
 ├── reminder.py         # Модуль напоминаний
 ├── .gitignore         # Исключения для Git
+├── render.yaml        # Конфигурация Render
+├── Procfile           # Конфигурация для Heroku
 └── README.md          # Документация
 ```
 
@@ -65,7 +96,7 @@ Melesha_nails2.0/
 
 ## Безопасность
 
-- Токен бота хранится в коде (для продакшена рекомендуется использовать переменные окружения)
+- Токен бота и MASTER_ID хранятся в переменных окружения
 - База данных исключена из Git через .gitignore
 - Только мастер может управлять записями и отправлять сообщения в канал
 

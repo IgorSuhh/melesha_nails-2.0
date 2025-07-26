@@ -5,11 +5,13 @@ from datetime import datetime, timedelta
 import os
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = '7613022017:AAHm6SgWoIz5Symu7D6mPQv1J6lYwELNY_E'
-MASTER_ID = 1187382462
+# Читаем токен и MASTER_ID из переменных окружения
+TOKEN = os.getenv('BOT_TOKEN', '7613022017:AAHm6SgWoIz5Symu7D6mPQv1J6lYwELNY_E')
+MASTER_ID = int(os.getenv('MASTER_ID', '1187382462'))
 bot = telebot.TeleBot(TOKEN)
 
 DB_PATH = 'appointments.db'
+CHANNEL_ID = '@melesha_nails'  # Username канала
 
 # --- DB ---
 def db_connect():
@@ -306,7 +308,6 @@ if __name__ == '__main__':
     import_services()
     bot.polling(none_stop=True)
 
-CHANNEL_ID = '@melesha_nails'  # Username канала
 
 @bot.message_handler(commands=['post_signup_button'])
 def post_signup_button(message):
